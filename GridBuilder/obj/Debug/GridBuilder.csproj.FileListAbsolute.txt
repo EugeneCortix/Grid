@@ -1,0 +1,20 @@
+C:\Users\TANYA\Documents\Учебные материалы\Программирование\Thursday\GridBuilder\GridBuilder\bin\Debug\GridBuilder.exe.config
+C:\Users\TANYA\Documents\Учебные материалы\Программирование\Thursday\GridBuilder\GridBuilder\bin\Debug\GridBuilder.exe
+C:\Users\TANYA\Documents\Учебные материалы\Программирование\Thursday\GridBuilder\GridBuilder\bin\Debug\GridBuilder.pdb
+C:\Users\TANYA\Documents\Учебные материалы\Программирование\Thursday\GridBuilder\GridBuilder\obj\Debug\GridBuilder.csprojAssemblyReference.cache
+C:\Users\TANYA\Documents\Учебные материалы\Программирование\Thursday\GridBuilder\GridBuilder\obj\Debug\GridBuilder.Form1.resources
+C:\Users\TANYA\Documents\Учебные материалы\Программирование\Thursday\GridBuilder\GridBuilder\obj\Debug\GridBuilder.Properties.Resources.resources
+C:\Users\TANYA\Documents\Учебные материалы\Программирование\Thursday\GridBuilder\GridBuilder\obj\Debug\GridBuilder.csproj.GenerateResource.cache
+C:\Users\TANYA\Documents\Учебные материалы\Программирование\Thursday\GridBuilder\GridBuilder\obj\Debug\GridBuilder.csproj.CoreCompileInputs.cache
+C:\Users\TANYA\Documents\Учебные материалы\Программирование\Thursday\GridBuilder\GridBuilder\obj\Debug\GridBuilder.exe
+C:\Users\TANYA\Documents\Учебные материалы\Программирование\Thursday\GridBuilder\GridBuilder\obj\Debug\GridBuilder.pdb
+C:\Users\TANYA\Documents\Study\Программирование\Thursday\GridBuilder\GridBuilder\bin\Debug\GridBuilder.exe.config
+C:\Users\TANYA\Documents\Study\Программирование\Thursday\GridBuilder\GridBuilder\bin\Debug\GridBuilder.exe
+C:\Users\TANYA\Documents\Study\Программирование\Thursday\GridBuilder\GridBuilder\bin\Debug\GridBuilder.pdb
+C:\Users\TANYA\Documents\Study\Программирование\Thursday\GridBuilder\GridBuilder\obj\Debug\GridBuilder.csprojAssemblyReference.cache
+C:\Users\TANYA\Documents\Study\Программирование\Thursday\GridBuilder\GridBuilder\obj\Debug\GridBuilder.Form1.resources
+C:\Users\TANYA\Documents\Study\Программирование\Thursday\GridBuilder\GridBuilder\obj\Debug\GridBuilder.Properties.Resources.resources
+C:\Users\TANYA\Documents\Study\Программирование\Thursday\GridBuilder\GridBuilder\obj\Debug\GridBuilder.csproj.GenerateResource.cache
+C:\Users\TANYA\Documents\Study\Программирование\Thursday\GridBuilder\GridBuilder\obj\Debug\GridBuilder.csproj.CoreCompileInputs.cache
+C:\Users\TANYA\Documents\Study\Программирование\Thursday\GridBuilder\GridBuilder\obj\Debug\GridBuilder.exe
+C:\Users\TANYA\Documents\Study\Программирование\Thursday\GridBuilder\GridBuilder\obj\Debug\GridBuilder.pdb
