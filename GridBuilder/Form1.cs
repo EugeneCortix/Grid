@@ -331,13 +331,13 @@ namespace GridBuilder
         // Makes nodes file
         private void saveNode()
         {
-            node.OrderBy(point => point.X)
-                        .ThenBy(point => point.Y);
-            string nodes = "X\tY\n";
+            ComparerP nc = new ComparerP();
+            node.Sort(nc);
+            string nodes = "№\tX\tY\n";
             string filename = "..\\...\\...\\node.txt";
             for(int i = 0; i < node.Count; i++)
             {
-                nodes += node[i].X.ToString() + '\t' + node[i].Y.ToString() + '\n';
+                nodes +=i.ToString()+'\t'+ node[i].X.ToString() + '\t' + node[i].Y.ToString() + '\n';
             }
             System.IO.File.WriteAllText(filename, nodes);
         }
@@ -348,16 +348,24 @@ namespace GridBuilder
             string filename = "..\\...\\...\\elements.txt";
             for (int i = 0; i < elements.Count; i++)
             {
-                el += i.ToString()+'\t';
-                el+=elements[i].p1.X.ToString() +", " + elements[i].p1.Y.ToString() + '\t'+
-                   elements[i].p2.X.ToString() + ", " + elements[i].p2.Y.ToString() + '\t' +
-                   elements[i].p3.X.ToString() + ", " + elements[i].p3.Y.ToString() + '\t'+
-                   elements[i].p4.X.ToString() + ", " + elements[i].p4.Y.ToString() + '\t'+'\n';
+                el += i.ToString()+'\t' +'\n';
+                el+=PrintNum(elements[i].p1) + '\t'+
+                   PrintNum(elements[i].p2) + '\t' +
+                   PrintNum(elements[i].p3) + '\t'+
+                   PrintNum(elements[i].p4) + '\n' +'\n';
             }
             System.IO.File.WriteAllText(filename, el);
         }
-
+        private string PrintNum(Point p)
+        {
+            int n = -1;
+            for (int i = 0; i < node.Count; i++)
+            {
+                if (node[i] == p) n = i;
+            }
+            return n.ToString();
         }
+    }
     // The struct of an element
     /*
      p2-----------p4
@@ -374,6 +382,7 @@ namespace GridBuilder
         public Point p2 { get; set; }
         public Point p3 { get; set; }
         public Point p4 { get; set; }
+
     }
     // Comparation for the sorting func
     public class Comparer : IComparer<Element>
@@ -395,5 +404,15 @@ namespace GridBuilder
             }
         }
     }
- 
+
+    public class ComparerP : IComparer<Point>
+    {
+        public int Compare(Point p, Point pp)
+        {
+            if (pp.X == p.X) return p.Y.CompareTo(pp.Y);
+            else return p.X.CompareTo(pp.X);
+        }
+    }
+
+
 }
