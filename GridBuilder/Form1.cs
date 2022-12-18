@@ -34,6 +34,8 @@ namespace GridBuilder
         public int xcrsh = 4; //X crushing for every element
         public int ycrsh = 4; //Y crushing for every element
 
+        public List<Edge> edges;
+
         public Form1()
         {
             fieldPoints = new List<Point>();
@@ -41,6 +43,7 @@ namespace GridBuilder
             addy = new List<int>();
             node = new List<Point>();
             elements = new List<Element>();
+            edges = new List<Edge>();
             InitializeComponent();
 
         }
@@ -159,6 +162,7 @@ namespace GridBuilder
             pictureBox1.Image = bmp;
             button3.Enabled = true;
         }
+        //Draws elements
         private void drel()
         {
             Pen addGridPen;
@@ -229,7 +233,7 @@ namespace GridBuilder
                 elements.Add(new Element() { p1 = point1, p2 = point2, p3 = point3, p4 = point4 });
             }
         }
-
+        // Gets addition grid's data from a file
         private void getAddGrid()
         {
             if (openFileDialog1.ShowDialog() == DialogResult.Cancel)
@@ -312,14 +316,51 @@ namespace GridBuilder
 
                     }
                 }
-                pictureBox1.Image = bmp;
-                saveNode();
-                saveElements();
+                
+            }
+            pictureBox1.Image = bmp;
+            saveNode();
+            saveElements();
+            assemblyEdgeList();
+            saveEdges();
+        }
+
+        private void assemblyEdgeList()
+        {
+            for (int i = 0; i < elements.Count; i++)
+            {
+                Edge edge12 = new Edge() { p1 = elements[i].p1, p2 = elements[i].p2 };
+                Edge edge13 = new Edge() { p1 = elements[i].p1, p2 = elements[i].p3 };
+                Edge edge24 = new Edge() { p1 = elements[i].p2, p2 = elements[i].p4 };
+                Edge edge34 = new Edge() { p1 = elements[i].p3, p2 = elements[i].p4 };
+
+                /* No inversed edges
+                Edge edge12 = new Edge() { p1 = elements[i].p1, p2 = elements[i].p2 };
+                Edge edge13 = new Edge() { p1 = elements[i].p1, p2 = elements[i].p3 };
+                Edge edge24 = new Edge() { p1 = elements[i].p2, p2 = elements[i].p4 };
+                Edge edge34 = new Edge() { p1 = elements[i].p3, p2 = elements[i].p4 };*/
+                if (reallyContains(edges, edge12) == false)
+                {
+                    edges.Add(edge12);
+                }
+
+                if (reallyContains(edges, edge13) == false) { edges.Add(edge13); }
+                if (reallyContains(edges, edge24) == false) {edges.Add(edge24);}
+                if (reallyContains(edges, edge34) == false) { edges.Add(edge34); }
             }
         }
 
-      
-
+        //func for dumb contains
+        private bool reallyContains(List<Edge> edlist, Edge edg)
+        {
+            for(int i = 0; i < edlist.Count; i++)
+            {
+                if (edlist[i].p1.X == edg.p1.X && edlist[i].p1.Y == edg.p1.Y &&
+                    edlist[i].p2.X == edg.p2.X && edlist[i].p2.Y == edg.p2.Y) return true;
+            }
+            return false;
+        }
+        // Prints a clicked coordinate to the label
         private void pictureBox1_MouseClick(object sender, MouseEventArgs e)
         {
             string coord = "";
@@ -328,7 +369,8 @@ namespace GridBuilder
             coord+= e.Y.ToString();
             label1.Text = coord;
         }
-        // Makes nodes file
+       
+        // Save files
         private void saveNode()
         {
             ComparerP nc = new ComparerP();
@@ -341,7 +383,6 @@ namespace GridBuilder
             }
             System.IO.File.WriteAllText(filename, nodes);
         }
-
         private void saveElements()
         {
             string el="";
@@ -356,6 +397,21 @@ namespace GridBuilder
             }
             System.IO.File.WriteAllText(filename, el);
         }
+        private void saveEdges()
+        {
+            string ed="";
+            string filename = "..\\...\\...\\edges.txt";
+            for (int i = 0; i < edges.Count; i++)
+            {
+                ed += i.ToString()+'\t' +'\n';
+                ed+= edges[i].p1.X.ToString() +", "+ edges[i].p1.Y.ToString() + '\t'+
+                   edges[i].p2.X.ToString() + ", " + edges[i].p2.Y.ToString()
+                    +'\n';
+            }
+            System.IO.File.WriteAllText(filename, ed);
+        }
+
+        // Finds numbers of points
         private string PrintNum(Point p)
         {
             int n = -1;
@@ -382,6 +438,13 @@ namespace GridBuilder
         public Point p2 { get; set; }
         public Point p3 { get; set; }
         public Point p4 { get; set; }
+
+    }
+    // Edges of elenents
+    public class Edge
+    {
+        public Point p1 { get; set; }
+        public Point p2 { get; set; }
 
     }
     // Comparation for the sorting func
